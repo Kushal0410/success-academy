@@ -33,7 +33,8 @@ export default function AdminDashboard({ onLogout }) {
     parent_name: '',
     contact_number: '',
     fees_status: 'Pending',
-    fees_amount: 1500
+    fees_amount: 1500,
+    join_date: new Date().toISOString().split('T')[0]
   });
 
   // Marks Entry State
@@ -178,7 +179,8 @@ export default function AdminDashboard({ onLogout }) {
         parent_name: newStudent.parent_name.trim() || 'Not Specified',
         contact_number: newStudent.contact_number.trim() || 'N/A',
         fees_status: newStudent.fees_status,
-        fees_amount: Number(newStudent.fees_amount || 1500)
+        fees_amount: Number(newStudent.fees_amount || 1500),
+        join_date: newStudent.join_date
       });
 
       showNotice(`Successfully added student ${newStudent.name}`);
@@ -192,7 +194,8 @@ export default function AdminDashboard({ onLogout }) {
         parent_name: '',
         contact_number: '',
         fees_status: 'Pending',
-        fees_amount: 1500
+        fees_amount: 1500,
+        join_date: new Date().toISOString().split('T')[0]
       });
       loadData();
     } catch (err) {
@@ -557,6 +560,7 @@ export default function AdminDashboard({ onLogout }) {
                       <th>Parent Name</th>
                       <th>Contact Number</th>
                       <th>Portal Password</th>
+                      <th>Join Date</th>
                       <th>Monthly Fee</th>
                       <th>Actions</th>
                     </tr>
@@ -564,7 +568,7 @@ export default function AdminDashboard({ onLogout }) {
                   <tbody>
                     {filteredStudents.length === 0 ? (
                       <tr>
-                        <td colSpan="8" style={{ textAlign: 'center', color: 'var(--text-muted)', padding: '24px' }}>
+                        <td colSpan="9" style={{ textAlign: 'center', color: 'var(--text-muted)', padding: '24px' }}>
                           No students matching your search.
                         </td>
                       </tr>
@@ -579,6 +583,7 @@ export default function AdminDashboard({ onLogout }) {
                           <td>
                             <code style={{ fontSize: '13px' }}>{st.password}</code>
                           </td>
+                          <td style={{ fontWeight: '600', color: 'var(--accent)' }}>{st.join_date || 'N/A'}</td>
                           <td>₹{st.fees_amount}/mo</td>
                           <td>
                             <button 
@@ -1142,6 +1147,18 @@ export default function AdminDashboard({ onLogout }) {
                     <option value="Pending">Pending</option>
                     <option value="Paid">Paid</option>
                   </select>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="modal-student-joindate">Join Date</label>
+                  <input 
+                    id="modal-student-joindate"
+                    className="select-filter" 
+                    type="date"
+                    value={newStudent.join_date}
+                    onChange={(e) => setNewStudent(prev => ({ ...prev, join_date: e.target.value }))}
+                    required
+                  />
                 </div>
 
               </div>
