@@ -13,59 +13,14 @@ if (isSupabaseConfigured) {
 
 // Initial seed data for LocalStorage fallback
 const DEFAULT_STUDENTS = [
-  { id: 'SA-001', name: 'Alex Mercer', password: 'alex', class_grade: 'Grade 10', parent_name: 'William Mercer', contact_number: '+1 555-0199', fees_status: 'Paid', fees_amount: 1500, fees_paid_date: '2026-07-02' },
-  { id: 'SA-002', name: 'Sarah Connor', password: 'sarah', class_grade: 'Grade 12', parent_name: 'Jane Connor', contact_number: '+1 555-0144', fees_status: 'Pending', fees_amount: 2000, fees_paid_date: '' },
-  { id: 'SA-003', name: 'Bruce Wayne', password: 'bruce', class_grade: 'Grade 11', parent_name: 'Thomas Wayne', contact_number: '+1 555-0122', fees_status: 'Paid', fees_amount: 1800, fees_paid_date: '2026-07-04' },
-  { id: 'SA-004', name: 'Peter Parker', password: 'peter', class_grade: 'Grade 10', parent_name: 'May Parker', contact_number: '+1 555-0188', fees_status: 'Pending', fees_amount: 1500, fees_paid_date: '' }
+  { id: 'SA-001', name: 'Alex Mercer', password: 'alex', class_grade: 'Grade 10', parent_name: 'William Mercer', contact_number: '+1 555-0199', fees_status: 'Paid', fees_amount: 1500, fees_paid_date: '2026-07-02', join_date: '2026-06-01' }
 ];
 
-const DEFAULT_MARKS = [
-  // Alex Mercer SA-001
-  { id: 'm1', student_id: 'SA-001', test_name: 'Algebra Quiz 1', subject: 'Maths', test_date: '2026-06-14', marks_obtained: 42, total_marks: 50, comments: 'Excellent analytical work!' },
-  { id: 'm2', student_id: 'SA-001', test_name: 'Calculus Basics', subject: 'Maths', test_date: '2026-06-21', marks_obtained: 45, total_marks: 50, comments: 'Great understanding of derivatives.' },
-  { id: 'm3', student_id: 'SA-001', test_name: 'Trigonometry Assessment', subject: 'Maths', test_date: '2026-06-28', marks_obtained: 38, total_marks: 50, comments: 'Focus more on identities.' },
-  { id: 'm4', student_id: 'SA-001', test_name: 'Statistics Weekly Test', subject: 'Maths', test_date: '2026-07-05', marks_obtained: 48, total_marks: 50, comments: 'Top of the class!' },
-  // Sarah Connor SA-002
-  { id: 'm5', student_id: 'SA-002', test_name: 'Newtonian Laws Test', subject: 'Physics', test_date: '2026-06-14', marks_obtained: 48, total_marks: 50, comments: 'Outstanding performance.' },
-  { id: 'm6', student_id: 'SA-002', test_name: 'Work & Energy', subject: 'Physics', test_date: '2026-06-21', marks_obtained: 49, total_marks: 50, comments: 'Perfect problem solving approach.' },
-  { id: 'm7', student_id: 'SA-002', test_name: 'Rotational Dynamics', subject: 'Physics', test_date: '2026-06-28', marks_obtained: 47, total_marks: 50, comments: 'Great grasp of torque calculations.' },
-  // Bruce Wayne SA-003
-  { id: 'm8', student_id: 'SA-003', test_name: 'Organic Chem Quiz', subject: 'Chemistry', test_date: '2026-06-14', marks_obtained: 35, total_marks: 50, comments: 'Decent, needs revision on alkanes.' },
-  { id: 'm9', student_id: 'SA-003', test_name: 'Chemical Bonding', subject: 'Chemistry', test_date: '2026-06-21', marks_obtained: 40, total_marks: 50, comments: 'Good conceptual knowledge.' },
-  { id: 'm10', student_id: 'SA-003', test_name: 'Thermodynamics Test', subject: 'Chemistry', test_date: '2026-06-28', marks_obtained: 43, total_marks: 50, comments: 'Good work on entropy problems.' },
-  // Peter Parker SA-004
-  { id: 'm11', student_id: 'SA-004', test_name: 'Algebra Quiz 1', subject: 'Maths', test_date: '2026-06-14', marks_obtained: 47, total_marks: 50, comments: 'Superb! Fast calculations.' },
-  { id: 'm12', student_id: 'SA-004', test_name: 'Calculus Basics', subject: 'Maths', test_date: '2026-06-21', marks_obtained: 49, total_marks: 50, comments: 'Near perfect!' }
-];
 
-const DEFAULT_ATTENDANCE = [
-  // Alex Mercer
-  { id: 'a1', student_id: 'SA-001', date: '2026-06-14', status: 'Present', remarks: '' },
-  { id: 'a2', student_id: 'SA-001', date: '2026-06-21', status: 'Present', remarks: '' },
-  { id: 'a3', student_id: 'SA-001', date: '2026-06-28', status: 'Absent', remarks: 'Sick leave (informed)' },
-  { id: 'a4', student_id: 'SA-001', date: '2026-07-05', status: 'Present', remarks: '' },
-  // Sarah Connor
-  { id: 'a5', student_id: 'SA-002', date: '2026-06-14', status: 'Present', remarks: '' },
-  { id: 'a6', student_id: 'SA-002', date: '2026-06-21', status: 'Present', remarks: '' },
-  { id: 'a7', student_id: 'SA-002', date: '2026-06-28', status: 'Present', remarks: '' },
-  { id: 'a8', student_id: 'SA-002', date: '2026-07-05', status: 'Present', remarks: '' },
-  // Bruce Wayne
-  { id: 'a9', student_id: 'SA-003', date: '2026-06-14', status: 'Present', remarks: '' },
-  { id: 'a10', student_id: 'SA-003', date: '2026-06-21', status: 'Absent', remarks: 'Out of town' },
-  { id: 'a11', student_id: 'SA-003', date: '2026-06-28', status: 'Present', remarks: '' },
-  { id: 'a12', student_id: 'SA-003', date: '2026-07-05', status: 'Present', remarks: '' },
-  // Peter Parker (SA-004) - Seeded with 5 Late entries to verify 5 Lates = 1 Absent math
-  { id: 'a13', student_id: 'SA-004', date: '2026-06-14', status: 'Late', remarks: 'Late 10m' },
-  { id: 'a14', student_id: 'SA-004', date: '2026-06-21', status: 'Late', remarks: 'Late 15m' },
-  { id: 'a15', student_id: 'SA-004', date: '2026-06-28', status: 'Late', remarks: 'Late 5m' },
-  { id: 'a16', student_id: 'SA-004', date: '2026-07-02', status: 'Late', remarks: 'Late 8m' },
-  { id: 'a17', student_id: 'SA-004', date: '2026-07-05', status: 'Late', remarks: 'Late 12m' }
-];
-
-// Helper to initialize local storage (V2 keys to ensure automatic data refresh)
+// Helper to initialize local storage (V3 keys to ensure automatic data refresh)
 const initLocalStorage = () => {
-  if (!localStorage.getItem('sa_students_v2')) {
-    localStorage.setItem('sa_students_v2', JSON.stringify(DEFAULT_STUDENTS));
+  if (!localStorage.getItem('sa_students_v3')) {
+    localStorage.setItem('sa_students_v3', JSON.stringify(DEFAULT_STUDENTS));
   }
   if (!localStorage.getItem('sa_marks_v2')) {
     localStorage.setItem('sa_marks_v2', JSON.stringify(DEFAULT_MARKS));
@@ -80,7 +35,7 @@ initLocalStorage();
 // Local Storage Helper Client
 const LocalStorageDb = {
   async getStudents() {
-    return JSON.parse(localStorage.getItem('sa_students_v2') || '[]');
+    return JSON.parse(localStorage.getItem('sa_students_v3') || '[]');
   },
 
   async addStudent(student) {
@@ -93,14 +48,14 @@ const LocalStorageDb = {
       ...student,
       fees_paid_date: student.fees_status === 'Paid' ? new Date().toISOString().split('T')[0] : ''
     });
-    localStorage.setItem('sa_students_v2', JSON.stringify(students));
+    localStorage.setItem('sa_students_v3', JSON.stringify(students));
     return student;
   },
 
   async deleteStudent(id) {
     let students = await this.getStudents();
     students = students.filter(s => s.id !== id);
-    localStorage.setItem('sa_students_v2', JSON.stringify(students));
+    localStorage.setItem('sa_students_v3', JSON.stringify(students));
 
     // Cascade delete marks and attendance
     let marks = JSON.parse(localStorage.getItem('sa_marks_v2') || '[]');
@@ -120,7 +75,7 @@ const LocalStorageDb = {
     if (index !== -1) {
       students[index].fees_status = status;
       students[index].fees_paid_date = status === 'Paid' ? new Date().toISOString().split('T')[0] : '';
-      localStorage.setItem('sa_students_v2', JSON.stringify(students));
+      localStorage.setItem('sa_students_v3', JSON.stringify(students));
       return students[index];
     }
     throw new Error('Student not found');
