@@ -185,7 +185,7 @@ export default function LandingPage({ setActiveTab }) {
               <ul>
                 <li><MapPin size={16} /> No 45, Bajana Koil 3rd St, Veppambattu, perumalpatu, Tamil Nadu 602024</li>
                 <li><Phone size={16} /> +91 9381173259</li>
-                <li><Mail size={16} /> info@successacademy.edu</li>
+                <li><Mail size={16} /> Kushal@successacademy.edu</li>
               </ul>
             </div>
           </div>
